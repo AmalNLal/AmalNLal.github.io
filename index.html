@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Amal Nimmy Lal — M.Sc. Computer Science</title>
-<meta name="description" content="Amal Nimmy Lal — M.Sc. Computer Science at Universität Paderborn. Working with LLMs, RAG pipelines, and ML at Fraunhofer IEM and DICE Research Group." />
+<title>Amal Nimmy Lal, M.Sc. Computer Science</title>
+<meta name="description" content="Amal Nimmy Lal, M.Sc. Computer Science at Universität Paderborn. Working with LLMs, RAG pipelines, and ML at Fraunhofer IEM and DICE Research Group." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #f6f2ea;
-    --bg-2: #efe9dd;
-    --ink: #1a1815;
-    --ink-soft: #4a4640;
-    --ink-mute: #8a8278;
-    --rule: #d9d1c2;
-    --accent: #b04a2f;      /* muted terracotta */
-    --accent-soft: #e8d7ce;
+    /* Business-card palette: black ink, three paper backgrounds */
+    --paper-white: #ffffff;
+    --paper-pink:  #f5dfe3;   /* soft, chalky pink */
+    --paper-green: #d8e5d0;   /* pale sage */
+    --ink:         #111111;
+    --ink-soft:    #353535;
+    --ink-mute:    #6b6b6b;
+    --rule:        #111111;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    background: var(--bg);
+    background: var(--paper-white);
     color: var(--ink);
     font-family: "Inter", system-ui, sans-serif;
     font-weight: 400;
@@ -32,20 +32,22 @@
     text-rendering: optimizeLegibility;
   }
   a{ color: inherit; }
-  a:hover{ color: var(--accent); }
+  a:hover{ opacity: .7; }
 
-  /* --- Layout shell --- */
-  .page{
+  /* --- Panels: three paper colours stacked full-bleed --- */
+  .panel{
+    width: 100%;
+  }
+  .panel.white{ background: var(--paper-white); }
+  .panel.pink { background: var(--paper-pink); }
+  .panel.green{ background: var(--paper-green); }
+  .panel-inner{
     max-width: 960px;
     margin: 0 auto;
-    padding: 56px 40px 96px;
+    padding: 56px 40px;
   }
-  @media (max-width: 760px){
-    .page{ padding: 44px 26px 80px; }
-  }
-  @media (max-width: 480px){
-    .page{ padding: 28px 20px 64px; }
-  }
+  @media (max-width: 760px){ .panel-inner{ padding: 44px 26px; } }
+  @media (max-width: 480px){ .panel-inner{ padding: 32px 20px; } }
 
   /* --- Top bar --- */
   .topbar{
@@ -55,20 +57,16 @@
     font-size: 11px;
     letter-spacing: .08em;
     text-transform: uppercase;
-    color: var(--ink-mute);
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 22px 0 18px;
+    border-bottom: 1px solid var(--ink);
   }
-  .topbar .status{ min-width: 0; }
   .topbar .dot{
-    display:inline-block; width:7px; height:7px; border-radius:50%;
-    background: var(--accent); margin-right: 8px; vertical-align: 1px;
+    display:inline-block; width:8px; height:8px; border-radius:50%;
+    background: var(--ink); margin-right: 8px; vertical-align: 1px;
   }
   .topbar nav{ white-space: nowrap; }
-  .topbar nav a{
-    text-decoration:none;
-    margin-left: 18px;
-  }
+  .topbar nav a{ text-decoration:none; margin-left: 18px; }
   @media (max-width: 560px){
     .topbar{ flex-direction: column; align-items: flex-start; gap: 10px; font-size: 10px; }
     .topbar nav{ margin-left: -12px; white-space: normal; }
@@ -76,25 +74,17 @@
   }
 
   /* --- Hero --- */
-  .hero{
-    padding: 72px 0 56px;
-    border-bottom: 1px solid var(--rule);
-  }
-  @media (max-width: 560px){
-    .hero{ padding: 40px 0 40px; }
-  }
+  .hero{ padding: 80px 0 72px; border-bottom: 1px solid var(--ink); }
+  @media (max-width: 560px){ .hero{ padding: 44px 0 44px; } }
   .hero h1{
     font-family: "Instrument Serif", serif;
     font-weight: 400;
-    font-size: clamp(44px, 12vw, 112px);
-    line-height: 0.98;
+    font-size: clamp(46px, 12vw, 116px);
+    line-height: 0.95;
     letter-spacing: -0.02em;
     margin: 0 0 28px;
   }
-  .hero h1 em{
-    font-style: italic;
-    color: var(--accent);
-  }
+  .hero h1 em{ font-style: italic; }
   .hero .lede{
     font-family: "Instrument Serif", serif;
     font-style: italic;
@@ -109,14 +99,13 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 12px;
     letter-spacing: .04em;
-    color: var(--ink-soft);
+    color: var(--ink);
   }
   @media (max-width: 560px){
     .hero .meta{ font-size: 11px; gap: 12px 22px; }
     .hero .meta > div{ word-break: break-word; }
   }
-  .hero .meta a{ text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
-  .hero .meta a:hover{ border-color: var(--accent); }
+  .hero .meta a{ text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
   .hero .meta span.label{
     color: var(--ink-mute);
     margin-right: 8px;
@@ -131,8 +120,8 @@
     grid-template-columns: 180px 1fr;
     gap: 48px;
     padding: 56px 0;
-    border-bottom: 1px solid var(--rule);
   }
+  section.s + section.s{ border-top: 1px solid var(--ink); }
   @media (max-width: 820px){
     section.s{ grid-template-columns: 1fr; gap: 18px; padding: 44px 0; }
   }
@@ -145,13 +134,12 @@
     font-weight: 500;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--ink-mute);
+    color: var(--ink);
     margin: 6px 0 0;
     align-self: start;
   }
   section.s > h2::before{
-    content: "§ ";
-    color: var(--accent);
+    content: "";
   }
 
   /* --- About copy --- */
@@ -166,11 +154,8 @@
   }
   .about p + p{ font-size: clamp(15px, 1.6vw, 16px); font-family: "Inter", sans-serif; color: var(--ink-soft); }
 
-  /* --- Entry (work + education) --- */
-  .entry{
-    padding: 22px 0;
-    border-top: 1px dashed var(--rule);
-  }
+  /* --- Entry --- */
+  .entry{ padding: 22px 0; border-top: 1px dashed var(--ink); }
   .entry:first-child{ border-top: 0; padding-top: 0; }
   .entry-head{
     display:flex; justify-content: space-between; align-items: baseline;
@@ -189,39 +174,35 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: .06em;
-    color: var(--ink-mute);
+    color: var(--ink);
     white-space: nowrap;
   }
   @media (max-width: 480px){
     .entry-head{ gap: 4px; }
     .entry-head .when{ font-size: 10px; order: -1; width: 100%; }
   }
-  .entry ul li{ text-wrap: pretty; }
   .entry .org{
     font-family: "Inter", sans-serif;
     font-size: 14px;
-    color: var(--accent);
-    font-weight: 500;
+    color: var(--ink);
+    font-weight: 600;
     margin: 0 0 12px;
   }
-  .entry ul{
-    margin: 10px 0 0;
-    padding: 0;
-    list-style: none;
-  }
+  .entry ul{ margin: 10px 0 0; padding: 0; list-style: none; }
   .entry ul li{
     position: relative;
     padding-left: 22px;
     margin-bottom: 8px;
     color: var(--ink-soft);
     max-width: 640px;
+    text-wrap: pretty;
   }
   .entry ul li::before{
     content: "";
     position: absolute;
     left: 0; top: 11px;
     width: 12px; height: 1px;
-    background: var(--ink-mute);
+    background: var(--ink);
   }
 
   /* --- Achievements --- */
@@ -232,12 +213,16 @@
   }
   @media (max-width: 720px){ .cards{ grid-template-columns: 1fr; } }
   .card{
-    background: var(--bg-2);
-    border: 1px solid var(--rule);
-    border-radius: 2px;
+    background: var(--paper-white);
+    border: 1px solid var(--ink);
     padding: 22px 22px 24px;
     position: relative;
   }
+  /* alternate card backgrounds inside the green panel to keep the tri-color rhythm */
+  .cards .card:nth-child(1){ background: var(--paper-white); }
+  .cards .card:nth-child(2){ background: var(--paper-pink);  }
+  .cards .card:nth-child(3){ background: var(--paper-green); }
+  .cards .card:nth-child(4){ background: var(--paper-white); }
   .card .photo{
     display: block;
     width: calc(100% + 44px);
@@ -246,13 +231,14 @@
     object-fit: cover;
     object-position: 50% 38%;
     filter: saturate(0.92) contrast(1.02);
+    border-bottom: 1px solid var(--ink);
   }
   .card .kicker{
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink);
     margin-bottom: 10px;
   }
   .card h3{
@@ -263,11 +249,7 @@
     letter-spacing: -0.01em;
     margin: 0 0 8px;
   }
-  .card p{
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 6px 0 0;
-  }
+  .card p{ font-size: 14px; color: var(--ink-soft); margin: 6px 0 0; }
   .card .stamp{
     display:inline-block;
     margin-top: 14px;
@@ -275,9 +257,8 @@
     font-size: 10px;
     letter-spacing: .1em;
     padding: 4px 8px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    border-radius: 2px;
+    background: var(--ink);
+    color: var(--paper-white);
   }
 
   /* --- Skills --- */
@@ -292,289 +273,307 @@
     font-size: 10px;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--ink-mute);
+    color: var(--ink);
     margin: 0 0 10px;
     font-weight: 500;
   }
-  .tags{
-    display:flex; flex-wrap: wrap; gap: 6px;
-  }
+  .tags{ display:flex; flex-wrap: wrap; gap: 6px; }
   .tag{
     font-family: "Inter", sans-serif;
     font-size: 13px;
     color: var(--ink);
     padding: 4px 10px;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--ink);
     border-radius: 100px;
     background: transparent;
   }
-  .tag.accent{ color: var(--accent); border-color: var(--accent-soft); background: var(--accent-soft); }
+  .tag.solid{ color: var(--paper-white); background: var(--ink); }
 
   /* --- Footer --- */
   footer{
     display:flex; justify-content: space-between; align-items: baseline;
-    padding-top: 36px;
+    padding: 32px 0 40px;
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: .08em;
-    color: var(--ink-mute);
+    color: var(--ink);
     text-transform: uppercase;
     flex-wrap: wrap; gap: 12px;
+    border-top: 1px solid var(--ink);
   }
-  @media (max-width: 480px){
-    footer{ font-size: 10px; }
-  }
-  footer a{ text-decoration: none; }
-  footer a:hover{ color: var(--accent); }
+  @media (max-width: 480px){ footer{ font-size: 10px; } }
 
-  /* --- Selection --- */
-  ::selection{ background: var(--accent); color: var(--bg); }
+  ::selection{ background: var(--ink); color: var(--paper-white); }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="topbar">
-    <div class="status"><span class="dot"></span>Available for thesis &amp; research roles · 2026</div>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#awards">Awards</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<!-- PANEL 1 — WHITE: topbar + hero + about -->
+<div class="panel white">
+  <div class="panel-inner">
+
+    <div class="topbar">
+      <div class="status"><span class="dot"></span>Paderborn · 2026</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#awards">Awards</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <h1>Amal<br/>Nimmy <em>Lal</em>.</h1>
+      <p class="lede">
+        M.Sc. Computer Science at Universität Paderborn, working with LLMs, RAG pipelines,
+        and machine-learning systems at Fraunhofer IEM and the DICE Research Group.
+      </p>
+      <div class="meta">
+        <div><span class="label">Based</span>Paderborn, DE</div>
+        <div><span class="label">Email</span><a href="/cdn-cgi/l/email-protection#f3929e929f9f929fc3c1c3c4cacab3949e929a9fdd909c9e"><span class="__cf_email__" data-cfemail="5b3a363a37373a376b696b6c62621b3c363a323775383436">[email&#160;protected]</span></a></div>
+        <div><span class="label">Web</span><a href="#contact">LinkedIn · GitHub</a></div>
+      </div>
+    </header>
+
+    <section class="s">
+      <h2>About</h2>
+      <div class="about">
+        <p>
+          M.Sc. Computer Science candidate at Universität Paderborn with a focus on data science
+          and applied AI. Current work spans natural language processing, retrieval-augmented
+          generation, and computer vision, applied across both academic research and
+          industrial deployments.
+        </p>
+        <p>
+          Ongoing contributions to airport-automation projects at Fraunhofer IEM, previous
+          work with the DICE Research Group on semantic search over scientific literature
+          (co-authored and published at ESWC 2024, Springer), and first-place finishes at
+          two Paderborn hackathons in 2025.
+        </p>
+      </div>
+    </section>
+
   </div>
-
-  <header class="hero">
-    <h1>Amal<br/>Nimmy <em>Lal</em>.</h1>
-    <p class="lede">
-      M.Sc. Computer Science at Universität Paderborn — working with LLMs, RAG pipelines,
-      and machine-learning systems at Fraunhofer IEM and the DICE Research Group.
-    </p>
-    <div class="meta">
-      <div><span class="label">Based</span>Paderborn, DE</div>
-      <div><span class="label">Email</span><a href="mailto:amallal020799@gmail.com">amallal020799@gmail.com</a></div>
-      <div><span class="label">Web</span><a href="#contact">LinkedIn · GitHub</a></div>
-    </div>
-  </header>
-
-  <!-- ABOUT -->
-  <section class="s">
-    <h2>About</h2>
-    <div class="about">
-      <p>
-        I build and fine-tune language models, retrieval pipelines, and the quiet research
-        infrastructure that keeps them honest — from semantic search over scientific literature
-        to object-localisation systems on an airport apron.
-      </p>
-      <p>
-        Lately: automated luggage handling at Fraunhofer IEM, cross-lingual semantic search
-        published at ESWC 2024, and first-place wins at two Paderborn hackathons in 2025.
-      </p>
-    </div>
-  </section>
-
-  <!-- WORK -->
-  <section class="s" id="work">
-    <h2>Experience</h2>
-    <div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <h3>Student Assistant</h3>
-          <div class="when">JAN 2025 — PRESENT</div>
-        </div>
-        <p class="org">Fraunhofer IEM — Institute for Mechatronic Systems Design, Paderborn</p>
-        <ul>
-          <li>Led 5- and 3-person teams across two airport-automation projects — delivered the first on schedule, which earned the follow-on scope.</li>
-          <li>Designed a 10-microservice backend on FastAPI + Kafka + Cassandra with Redis for hot state — isolating failures and scaling services independently.</li>
-          <li>Integrated Blickfeld (LiDAR), Gemini, and Lupus sensors on-site; wrote reusable calibration procedures that cut setup time on future installs.</li>
-          <li>Fine-tuned a computer-vision model on airplane components (nose, wings, engines) with segmentation-model fusion for real-time localisation — halving error from 10 cm to 5 cm and eliminating misalignments.</li>
-          <li>Engineered sensor-driven luggage dimensioning that feeds the autonomous robot-loading stage.</li>
-          <li>Provisioned on-site servers and remote access, enabling 24/7 monitoring of deployed systems.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <h3>Student Research Assistant</h3>
-          <div class="when">NOV 2023 — OCT 2024</div>
-        </div>
-        <p class="org">DICE Research Group, Paderborn</p>
-        <ul>
-          <li>Co-developed the Materials AI Agent — a semantic search interface for Springer Nature — with work published at ESWC 2024 (Springer).</li>
-          <li>Pretrained a BERT MLM on material-science vocabulary, powering domain-aware language understanding inside the chatbot.</li>
-          <li>Built a LangChain tool that indexes input text into vector storage — the retrieval backbone for downstream RAG queries.</li>
-          <li>Filtered RAG retrieval by indexed URIs, improving retrieval precision by 78%.</li>
-          <li>Fine-tuned and benchmarked Mistral 7B, Zephyr 7B, Llama2 7B, and Llama2 13B on material-science NER — reaching a 90% F1 score.</li>
-          <li>Integrated an agent system into the <code>ai-search</code> backend route, powering typeahead prediction of the next compound or material-science term as the user types.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <h3>Data Science &amp; ML Scholar Intern</h3>
-          <div class="when">JAN 2022 — FEB 2022</div>
-        </div>
-        <p class="org">Tathastu Technologies Pvt. Ltd, Noida, India</p>
-        <ul>
-          <li>Exploratory data analysis across multiple datasets and feature engineering that lifted model accuracy.</li>
-          <li>Applied ML techniques to five real-world problem statements end to end.</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="s" id="education">
-    <h2>Education</h2>
-    <div>
-      <div class="entry">
-        <div class="entry-head">
-          <h3>M.Sc. Computer Science</h3>
-          <div class="when">OCT 2022 — PRESENT</div>
-        </div>
-        <p class="org">Universität Paderborn, Germany</p>
-        <ul>
-          <li>Relevant coursework: Explainable AI, Unsupervised Learning (R), Prolog.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <div class="entry-head">
-          <h3>B.Tech in Computer Science &amp; Engineering</h3>
-          <div class="when">AUG 2017 — JUN 2021</div>
-        </div>
-        <p class="org">KCC Institute of Technology and Management, India</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AWARDS -->
-  <section class="s" id="awards">
-    <h2>Selected Work</h2>
-    <div>
-      <div class="cards">
-
-        <div class="card">
-          <div class="kicker">Publication · ESWC 2024</div>
-          <h3>CLASS MATE</h3>
-          <p>Cross-Lingual Semantic Search for Material Science, driven by Knowledge Graphs. Published in the proceedings of the European Semantic Web Conference 2024 (Springer).</p>
-          <div class="stamp">Peer-reviewed</div>
-        </div>
-
-        <div class="card">
-          <img class="photo" src="assets/amal-hackathon.jpg" alt="Amal presenting the AI Calling Agent project at GDG DevFest Paderborn, 2025" />
-          <div class="kicker">Winner · Vibathon Paderborn 2025</div>
-          <h3>AI Calling Agent for Expats</h3>
-          <p>End-to-end voice automation that helps English-speaking expats book appointments with German doctors — with real-time calendar integration. 1st of 13 teams at GDG DevFest.</p>
-          <div class="stamp">1st Place</div>
-        </div>
-
-        <div class="card">
-          <div class="kicker">Winner · Makeathon XCHANGE4INDUSTRY 2025</div>
-          <h3>Digital Data Vault</h3>
-          <p>A data-networking concept for Werkzeugbau Berger GmbH, judged by Fraunhofer IEM and industry leaders. Won €3,000 and 1st place against 7 teams.</p>
-          <div class="stamp">€3,000 · 1st Place</div>
-        </div>
-
-        <div class="card">
-          <div class="kicker">Academic Project</div>
-          <h3>GenAI Requirements Generation</h3>
-          <p>Team of five using GPT-4 and RAG to generate software requirements — reduced token usage by 15%. Led frontend work in React.js and Streamlit.</p>
-          <div class="stamp">GPT-4 · RAG</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="s" id="skills">
-    <h2>Toolkit</h2>
-    <div class="skills">
-      <div>
-        <h4>AI &amp; ML</h4>
-        <div class="tags">
-          <span class="tag accent">NLP</span>
-          <span class="tag accent">RAG</span>
-          <span class="tag accent">Computer Vision</span>
-          <span class="tag">BERT · Mistral · Zephyr · Llama2</span>
-          <span class="tag">YOLO · SAM</span>
-          <span class="tag">Knowledge Graphs</span>
-          <span class="tag">Explainable AI</span>
-        </div>
-      </div>
-      <div>
-        <h4>Languages &amp; Frameworks</h4>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">R</span>
-          <span class="tag">ReactJS</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">Selenium</span>
-          <span class="tag">Prolog</span>
-        </div>
-      </div>
-      <div>
-        <h4>Data · Infra · Sensors</h4>
-        <div class="tags">
-          <span class="tag">Kafka</span>
-          <span class="tag">Cassandra</span>
-          <span class="tag">Redis</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Microservices</span>
-          <span class="tag">Blickfeld LiDAR</span>
-          <span class="tag">Gemini · Lupus</span>
-        </div>
-      </div>
-      <div>
-        <h4>Off the clock</h4>
-        <div class="tags">
-          <span class="tag">Fabric Painting</span>
-          <span class="tag">Bollywood Dancing</span>
-          <span class="tag">Travel &amp; Event Planning</span>
-        </div>
-      </div>
-      <div>
-        <h4>Languages</h4>
-        <div class="tags">
-          <span class="tag">English</span>
-          <span class="tag">German — learning</span>
-          <span class="tag">Hindi · Malayalam</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="s" id="contact">
-    <h2>Contact</h2>
-    <div>
-      <p style="font-family:'Instrument Serif',serif; font-size: 28px; line-height:1.3; margin:0 0 20px; max-width: 560px;">
-        Happy to chat about research roles, thesis collaborations, or anything around
-        LLMs and applied NLP.
-      </p>
-      <div class="meta" style="display:flex; flex-wrap:wrap; gap:28px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft);">
-        <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">Email</span>
-          <a href="mailto:amallal020799@gmail.com" style="border-bottom:1px solid var(--rule); padding-bottom:2px; text-decoration:none;">amallal020799@gmail.com</a>
-        </div>
-        <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">LinkedIn</span>
-          <a href="#" style="border-bottom:1px solid var(--rule); padding-bottom:2px; text-decoration:none;">/in/amal-nimmy-lal</a>
-        </div>
-        <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">GitHub</span>
-          <a href="#" style="border-bottom:1px solid var(--rule); padding-bottom:2px; text-decoration:none;">/amallal</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div>© Amal Nimmy Lal · Paderborn</div>
-    <div>Last updated · Jan 2026</div>
-  </footer>
-
 </div>
-</body>
+
+<!-- PANEL 2 — PINK: experience + education -->
+<div class="panel pink">
+  <div class="panel-inner">
+
+    <section class="s" id="work">
+      <h2>Experience</h2>
+      <div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Student Assistant</h3>
+            <div class="when">JAN 2025 – PRESENT</div>
+          </div>
+          <p class="org">Fraunhofer IEM, Institute for Mechatronic Systems Design, Paderborn</p>
+          <ul>
+            <li>Led 5- and 3-person teams across two airport-automation projects. Delivered the first on schedule, which earned the follow-on scope.</li>
+            <li>Designed a 10-microservice backend on FastAPI, Kafka, and Cassandra with Redis for hot state, isolating failures and scaling services independently.</li>
+            <li>Integrated Blickfeld (LiDAR), Gemini (stereo camera), and Lupus sensors on-site. Wrote reusable calibration procedures that cut setup time on future installs.</li>
+            <li>Fine-tuned a computer-vision model on airplane components (nose, wings, engines) with segmentation-model fusion for real-time localisation, halving error from 10 cm to 5 cm and eliminating misalignments.</li>
+            <li>Engineered sensor-driven luggage dimensioning that feeds the autonomous robot-loading stage.</li>
+            <li>Provisioned on-site servers and remote access, enabling 24/7 monitoring of deployed systems.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Student Research Assistant</h3>
+            <div class="when">NOV 2023 – OCT 2024</div>
+          </div>
+          <p class="org">DICE Research Group, Paderborn</p>
+          <ul>
+            <li>Co-developed the Materials AI Agent, a semantic search interface for Springer Nature, with work published at ESWC 2024 (Springer).</li>
+            <li>Pretrained a BERT MLM on material-science vocabulary, powering domain-aware language understanding inside the chatbot.</li>
+            <li>Built a LangChain tool that indexes input text into vector storage, the retrieval backbone for downstream RAG queries.</li>
+            <li>Filtered RAG retrieval by indexed URIs, improving retrieval precision by 78%.</li>
+            <li>Fine-tuned and benchmarked Mistral, Zephyr, and Llama2 variants on material-science NER, reaching a 90% F1 score.</li>
+            <li>Integrated an agent system into the <code>ai-search</code> backend route, powering typeahead prediction of the next compound or material-science term as the user types.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Data Science &amp; ML Scholar Intern</h3>
+            <div class="when">JAN 2022 – FEB 2022</div>
+          </div>
+          <p class="org">Tathastu Technologies Pvt. Ltd, Noida, India</p>
+          <ul>
+            <li>Exploratory data analysis across multiple datasets and feature engineering that lifted model accuracy.</li>
+            <li>Applied ML techniques to five real-world problem statements end to end.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="s" id="education">
+      <h2>Education</h2>
+      <div>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>M.Sc. Computer Science</h3>
+            <div class="when">OCT 2022 – PRESENT</div>
+          </div>
+          <p class="org">Universität Paderborn, Germany</p>
+          <ul>
+            <li>Focus area: Data Science.</li>
+            <li>Master's thesis: <em>Adversarial Attacks on KGE Explainers</em>, investigating the robustness of explanation methods for knowledge-graph embedding models under adversarial perturbation.</li>
+            <li>Relevant coursework: Machine Learning, Explainable AI, Unsupervised Learning (R), Prolog.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>B.Tech in Computer Science &amp; Engineering</h3>
+            <div class="when">AUG 2017 – JUN 2021</div>
+          </div>
+          <p class="org">KCC Institute of Technology and Management, India</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- PANEL 3 — GREEN: awards + skills -->
+<div class="panel green">
+  <div class="panel-inner">
+
+    <section class="s" id="awards">
+      <h2>Selected Work</h2>
+      <div>
+        <div class="cards">
+
+          <div class="card">
+            <div class="kicker">Publication · ESWC 2024</div>
+            <h3>CLASS MATE</h3>
+            <p>Cross-Lingual Semantic Search for Material Science, driven by Knowledge Graphs. Published in the proceedings of the European Semantic Web Conference 2024 (Springer).</p>
+            <div class="stamp">Peer-reviewed</div>
+          </div>
+
+          <div class="card">
+            <img class="photo" src="assets/amal-hackathon.jpg" alt="Amal presenting the AI Calling Agent project at GDG DevFest Paderborn, 2025" />
+            <div class="kicker">Winner · Vibathon Paderborn 2025</div>
+            <h3>AI Calling Agent for Expats</h3>
+            <p>End-to-end voice automation that helps English-speaking expats book appointments with German doctors, with real-time calendar integration. 1st of 13 teams at GDG DevFest.</p>
+            <div class="stamp">1st Place</div>
+          </div>
+
+          <div class="card">
+            <div class="kicker">Winner · Makeathon XCHANGE4INDUSTRY 2025</div>
+            <h3>Digital Data Vault</h3>
+            <p>A data-networking concept for Werkzeugbau Berger GmbH, judged by Fraunhofer IEM and industry leaders. Won €3,000 and 1st place against 7 teams.</p>
+            <div class="stamp">€3,000 · 1st Place</div>
+          </div>
+
+          <div class="card">
+            <div class="kicker">Academic Project</div>
+            <h3>GenAI Requirements Generation</h3>
+            <p>Team of five using GPT-4 and RAG to generate software requirements, reducing token usage by 15%. Led frontend work in React.js and Streamlit.</p>
+            <div class="stamp">GPT-4 · RAG</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="s" id="skills">
+      <h2>Toolkit</h2>
+      <div class="skills">
+        <div>
+          <h4>AI &amp; ML</h4>
+          <div class="tags">
+            <span class="tag solid">NLP</span>
+            <span class="tag solid">RAG</span>
+            <span class="tag solid">Computer Vision</span>
+            <span class="tag">BERT · Mistral · Zephyr · Llama2</span>
+            <span class="tag">YOLO · SAM</span>
+            <span class="tag">Knowledge Graphs</span>
+            <span class="tag">Explainable AI</span>
+          </div>
+        </div>
+        <div>
+          <h4>Languages &amp; Frameworks</h4>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">ReactJS</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Prolog</span>
+          </div>
+        </div>
+        <div>
+          <h4>Data · Infra · Sensors</h4>
+          <div class="tags">
+            <span class="tag">Kafka</span>
+            <span class="tag">Cassandra</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">Blickfeld LiDAR</span>
+            <span class="tag">Gemini (stereo camera)</span>
+            <span class="tag">Lupus</span>
+          </div>
+        </div>
+        <div>
+          <h4>Off the clock</h4>
+          <div class="tags">
+            <span class="tag">Fabric Painting</span>
+            <span class="tag">Bollywood Dancing</span>
+            <span class="tag">Travel &amp; Event Planning</span>
+          </div>
+        </div>
+        <div>
+          <h4>Languages</h4>
+          <div class="tags">
+            <span class="tag">English</span>
+            <span class="tag">German (A2)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- PANEL 4 — PINK: contact -->
+<div class="panel pink">
+  <div class="panel-inner">
+
+    <section class="s" id="contact">
+      <h2>Contact</h2>
+      <div>
+        <p style="font-family:'Instrument Serif',serif; font-size: clamp(22px, 3vw, 28px); line-height:1.3; margin:0 0 20px; max-width: 560px;">
+          Happy to chat about research roles or anything around LLMs and applied NLP.
+        </p>
+        <div class="meta" style="display:flex; flex-wrap:wrap; gap:28px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink);">
+          <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">Email</span>
+            <a href="/cdn-cgi/l/email-protection#40212d212c2c212c70727077797900272d21292c6e232f2d" style="border-bottom:1px solid var(--ink); padding-bottom:2px; text-decoration:none;"><span class="__cf_email__" data-cfemail="c2a3afa3aeaea3aef2f0f2f5fbfb82a5afa3abaeeca1adaf">[email&#160;protected]</span></a>
+          </div>
+          <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">LinkedIn</span>
+            <a href="#" style="border-bottom:1px solid var(--ink); padding-bottom:2px; text-decoration:none;">/in/amal-nimmy-lal</a>
+          </div>
+          <div><span style="color:var(--ink-mute); text-transform:uppercase; font-size:10px; letter-spacing:.12em; margin-right:8px;">GitHub</span>
+            <a href="#" style="border-bottom:1px solid var(--ink); padding-bottom:2px; text-decoration:none;">/amallal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Amal Nimmy Lal · Paderborn</div>
+      <div>Last updated · 2026</div>
+    </footer>
+
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
